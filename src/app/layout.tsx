@@ -1,6 +1,13 @@
+import { ReactNode } from 'react';
+
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { ThemeProvider } from '@/context/ThemeContext'; 
+import { store, persistor } from '@/store';
+
+
 import type { Metadata } from "next";
 import { Inter } from 'next/font/google';
-// import { Providers } from '@/store/providers';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,14 +19,18 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={inter.className}>
-      {/* <Providers> */}
-          {children}
-        {/* </Providers> */}
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
+        </PersistGate>
+      </Provider>
       </body>
     </html>
   );
