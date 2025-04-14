@@ -1,7 +1,7 @@
 'use client';
 
-import { ChevronLeft, ChevronRight, Ellipsis } from 'lucide-react';
-import { NavButton, PageButton, PaginationContainer } from './Pagination.styles';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { PageButton, PaginationContainer } from "./Pagination.styles";
 
 interface PaginationProps {
   currentPage: number;
@@ -10,55 +10,35 @@ interface PaginationProps {
 }
 
 export const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) => {
-  const getVisiblePages = (current: number, total: number): (number | '...')[] => {
-    const pages: (number | '...')[] = [];
-  
-    if (total <= 7) {
-      return Array.from({ length: total }, (_, i) => i + 1);
-    }
-  
-    pages.push(1);
-  
-    if (current > 4) pages.push('...');
-  
-    const start = Math.max(2, current - 1);
-    const end = Math.min(total - 1, current + 1);
-  
-    for (let i = start; i <= end; i++) {
-      pages.push(i);
-    }
-  
-    if (current < total - 3) pages.push('...');
-  
-    pages.push(total);
-  
-    return pages;
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  const handlePrevious = () => {
+    if (currentPage > 1) onPageChange(currentPage - 1);
   };
 
-  const visiblePages = getVisiblePages(currentPage, totalPages);
+  const handleNext = () => {
+    if (currentPage < totalPages) onPageChange(currentPage + 1);
+  };
 
   return (
     <PaginationContainer>
-      <NavButton disabled={currentPage === 1} onClick={() => onPageChange(currentPage - 1)}>
+      <PageButton isActive={false} onClick={handlePrevious} disabled={currentPage === 1}>
         <ChevronLeft size={16} />
-      </NavButton>
+      </PageButton>
 
-      {visiblePages.map((page, index) =>
-        page === '...' ? (
-          <Ellipsis key={index}>...</Ellipsis>
-        ) : (
-          <PageButton
-            key={page}
-            isActive={page === currentPage}
-            onClick={() => onPageChange(page)}
-          >
-            {page}
-          </PageButton>
-        )
-      )}
-      <NavButton disabled={currentPage === totalPages} onClick={() => onPageChange(currentPage + 1)}>
+      {pages.map((page) => (
+        <PageButton
+          key={page}
+          isActive={page === currentPage}
+          onClick={() => onPageChange(page)}
+        >
+          {page}
+        </PageButton>
+      ))}
+
+      <PageButton isActive={false} onClick={handleNext} disabled={currentPage === totalPages}>
         <ChevronRight size={16} />
-      </NavButton>
+      </PageButton>
     </PaginationContainer>
   );
 };

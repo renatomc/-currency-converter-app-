@@ -48,3 +48,9 @@ export const TableCell = styled.td`
   padding: 12px;
   color: ${({ theme }) => theme.colors.text};
 `;
+
+export const PaginationWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+`;

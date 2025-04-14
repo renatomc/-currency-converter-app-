@@ -13,6 +13,7 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  PaginationWrapper,
 } from './CurrencyTable.styles';
 
 export const CurrencyTable = () => {
@@ -106,11 +107,13 @@ export const CurrencyTable = () => {
           </TableBody>
         </StyledTable>
       </TableWrapper>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={Math.ceil(sortedData.length / itemsPerPage)}
-        onPageChange={setCurrentPage}
-      />
+      <PaginationWrapper>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(sortedData.length / itemsPerPage)}
+          onPageChange={setCurrentPage}
+        />
+      </PaginationWrapper>
     </>
   );
 };

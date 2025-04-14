@@ -2,50 +2,45 @@ import styled from '@emotion/styled';
 
 export const PaginationContainer = styled.div`
   display: flex;
-  gap: 6px;
+  gap: 8px;
   justify-content: center;
-  margin-top: 1rem;
   flex-wrap: wrap;
+  margin-top: 1rem;
+  padding: 0 1rem;
+  overflow-x: auto;
+
+  @media (max-width: 480px) {
+    justify-content: flex-start;
+    gap: 4px;
+  }
 `;
 
-export const PageButton = styled.button<{ isActive: boolean }>`
+
+type PageButtonProps = {
+  isActive: boolean;
+};
+
+export const PageButton = styled.button<PageButtonProps>`
   background-color: ${({ isActive, theme }) => (isActive ? theme.colors.primary : theme.colors.surface)};
   color: ${({ isActive, theme }) => (isActive ? '#fff' : theme.colors.text)};
   border: 1px solid ${({ theme }) => theme.colors.border};
   padding: 6px 10px;
+  min-width: 36px;
   border-radius: 4px;
+  cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  cursor: pointer;
-  min-width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
-    opacity: 0.85;
+    opacity: 0.8;
   }
-`;
-
-export const NavButton = styled.button<{ disabled?: boolean }>`
-  background: none;
-  border: none;
-  color: ${({ theme }) => theme.colors.text};
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 4px;
 
   &:disabled {
-    opacity: 0.4;
-    cursor: default;
-  }
-
-  &:hover:not(:disabled) {
-    background-color: ${({ theme }) => theme.colors.surface};
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 `;
-
-export const Ellipsis = styled.span`
-  padding: 6px 10px;
-  color: ${({ theme }) => theme.colors.textSecondary};
-  font-size: 14px;
-`;
-
 
