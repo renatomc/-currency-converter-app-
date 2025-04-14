@@ -1,7 +1,10 @@
+'use client';
+
+import { CurrencyTable } from "@/components/CurrencyTable";
+
 export default function Home() {
   return (
-   <div>
-    <h1>Home</h1>
-   </div>
+    <CurrencyTable />
   );
 }
+

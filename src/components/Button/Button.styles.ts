@@ -12,6 +12,7 @@ export const ButtonComponent = styled.button<ButtonProps>`
   border: none;
   transition: background-color 0.2s ease-in-out;
   color: ${({ theme }) => theme.colors.text};
+  width: 100%;
 
   background-color: ${({ theme, variant }) =>
     variant === 'primary' ? theme.colors.primary : theme.colors.secondary};

@@ -8,15 +8,16 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 
 import { setUserData } from '@/store/userSlice';
+import { Button } from '@/components/Button';
 
 import {
   FormWrapper,
   FormTitle,
   Input,
-  Button,
   FormField,
   ErrorMessage,
 } from './RegisterForm.styles';
+
 
 const schema = z.object({
   firstName: z.string().min(2, 'Nome é obrigatório'),
@@ -68,7 +69,7 @@ export const RegisterForm = () => {
         {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
       </FormField>
 
-      <Button type="submit">Cadastrar</Button>
+      <Button variant='secondary' type="submit">Cadastrar</Button>
     </FormWrapper>
   );
 };

@@ -24,22 +24,6 @@ export const Input = styled.input`
   color: ${({ theme }) => theme.colors.text};
 `;
 
-export const Button = styled.button`
-  margin-top: 1.5rem;
-  width: 100%;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 4px;
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.secondary};
-  }
-`;
-
 export const FormField = styled.div`
   margin-bottom: 1rem;
 `;
