@@ -1,13 +1,10 @@
 import { ReactNode } from 'react';
 
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import { ThemeProvider } from '@/context/ThemeContext'; 
-import { store, persistor } from '@/store';
-
-
 import type { Metadata } from "next";
 import { Inter } from 'next/font/google';
+import { ClientProviders } from '@/components/ClientProviders';
+import { Header } from '@/components/Header';
+import { MainContent } from '@/components/MainContent';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,13 +21,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <ThemeProvider>
-            {children}
-          </ThemeProvider>
-        </PersistGate>
-      </Provider>
+      <ClientProviders>
+        <Header />
+        <MainContent>
+          {children}
+        </MainContent>
+      </ClientProviders>
       </body>
     </html>
   );
