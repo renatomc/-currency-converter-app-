@@ -10,4 +10,11 @@ export interface Theme {
     border: string;
     error: string;
   };
+  breakpoints: {
+    xs: string;
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+  };
 }

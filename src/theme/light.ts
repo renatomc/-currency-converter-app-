@@ -12,4 +12,11 @@ export const lightTheme: Theme = {
     border: '#E5E7EB',
     error: '#DC2626',
   },
+  breakpoints: {
+    xs: '320px',
+    sm: '480px',
+    md: '768px',
+    lg: '1024px',
+    xl: '1280px',
+  },
 };

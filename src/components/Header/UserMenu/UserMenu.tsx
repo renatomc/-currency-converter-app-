@@ -42,7 +42,7 @@ export const UserMenu = () => {
   return (
     <MenuContainer ref={menuRef}>
       <MenuButton onClick={() => setOpen((prev) => !prev)}>
-        {`${user.firstName} ${user.lastName}`}
+        {user.firstName ? `${user.firstName} ${user.lastName}` : 'Usuário'}
         <ChevronDown size={16} />
       </MenuButton>
 
