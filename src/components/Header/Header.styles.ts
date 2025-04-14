@@ -34,3 +34,16 @@ export const ThemeToggleButton = styled.button`
     margin-right: 0.5rem;
   }
 `;
+
+export const HeaderTitleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+export const UserName = styled.p`
+  font-size: 14px;
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+export const ControllsWrapper = styled.div``;

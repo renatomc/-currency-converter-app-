@@ -2,5 +2,7 @@ import '@emotion/react';
 import { Theme as ThemeType } from '@/theme/types';
 
 declare module '@emotion/react' {
-  export type Theme = ThemeType;
+  export interface Theme extends ThemeType {
+    aditionalProperty?: string;
+  };
 }

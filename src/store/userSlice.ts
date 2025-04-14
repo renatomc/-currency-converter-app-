@@ -1,17 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface UserState {
-  name: string;
-  surname: string;
+  firstName: string;
+  lastName: string;
   country: string;
   email: string;
-  primaryColor: string;
-  secondaryColor: string;
+  primaryColor?: string;
+  secondaryColor?: string;
 }
 
 const initialState: UserState = {
-  name: '',
-  surname: '',
+  firstName: '',
+  lastName: '',
   country: '',
   email: '',
   primaryColor: '#0070f3',
