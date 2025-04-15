@@ -5,11 +5,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store/rootReducer';
 import { clearUserData } from '@/store/userSlice';
 import { MenuContainer, MenuButton, DropdownItem, DropDown } from './UserMenu.styles';
-import { ChevronDown, LogOut, Settings } from 'lucide-react';
+import { ChevronDown, LogOut, Settings, User } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import { UserEditModal } from '@/components/UserEditModal/UserEditModal';
 
-export const UserMenu = () => {
+export function UserMenu() {
   const [open, setOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+  const router = useRouter();
 
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
@@ -18,7 +23,7 @@ export const UserMenu = () => {
   const handleLogout = () => {
     dispatch(clearUserData());
     localStorage.removeItem('persist:@b3-challenge');
-    location.reload();
+    router.push("/");
   };
 
   const handleClickOutside = (e: MouseEvent) => {
@@ -54,17 +59,28 @@ export const UserMenu = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.15 }}
             >
-              <DropdownItem>
-              <Settings size={16} />
-              Configurações
+              <DropdownItem onClick={() => router.push('/register')}>
+                <User size={16} />
+                Cadastro
+              </DropdownItem>
+              {user.firstName && (
+                <DropdownItem onClick={() => setIsEditModalOpen(true)}>
+                  <User size={16} />
+                  Editar Perfil
+                </DropdownItem>
+              )}
+              <DropdownItem onClick={() => router.push('/settings')}>
+                <Settings size={16} />
+                Configurações
               </DropdownItem>
               <DropdownItem onClick={handleLogout}>
-              <LogOut size={16} />
-              Sair
+                <LogOut size={16} />
+                Sair
               </DropdownItem>
             </DropDown>
         )}
       </AnimatePresence>
+      <UserEditModal isOpen={isEditModalOpen} onClose={() => setIsEditModalOpen(false)} />
     </MenuContainer>
   );
 };

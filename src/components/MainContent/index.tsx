@@ -13,6 +13,6 @@ interface MainContentProps {
   children: ReactNode;
 }
 
-export const MainContent = ({ children }: MainContentProps) => {
+export function MainContent({ children }: MainContentProps) {
   return <Container>{children}</Container>;
 };

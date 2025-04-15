@@ -8,17 +8,23 @@ import { UserMenu } from './UserMenu';
 import { Sun, Moon } from 'lucide-react';
 
 import { HeaderContainer, HeaderTitle, ThemeToggleButton, HeaderTitleWrapper, UserName, ControllsWrapper } from './Header.styles';
+import { useRouter } from 'next/navigation';
 
 
-export const Header = () => {
+export function Header() {
   const { theme, toggleTheme } = useTheme();
+  const router = useRouter();
+
+  const handleClicklogo = () => {
+    router.push('/');
+  }
 
   const user = useSelector((state: RootState) => state.user);
 
   return (
     <HeaderContainer>
       <HeaderTitleWrapper>
-        <HeaderTitle>
+        <HeaderTitle onClick={handleClicklogo}>
           Currency Converter
         </HeaderTitle>
         <UserName>

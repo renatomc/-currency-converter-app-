@@ -28,7 +28,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-export const RegisterForm = () => {
+export function RegisterForm() {
   const dispatch = useDispatch();
   const router = useRouter();
 

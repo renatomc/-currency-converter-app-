@@ -20,6 +20,7 @@ export const HeaderTitle = styled.h1`
   font-size: 1.5rem;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.primary};
+  cursor: pointer;
 
   ${media.down('sm')} {
     font-size: 1.25rem;

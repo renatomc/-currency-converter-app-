@@ -5,6 +5,6 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: 'primary' | 'secondary';
 };
 
-export const Button = ({ variant = 'primary', ...props }: ButtonProps) => {
+export function Button({ variant = 'primary', ...props }: ButtonProps){
   return <ButtonComponent variant={variant} {...props} />;
 };

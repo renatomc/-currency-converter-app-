@@ -16,7 +16,7 @@ import {
   PaginationWrapper,
 } from './CurrencyTable.styles';
 
-export const CurrencyTable = () => {
+export function CurrencyTable() {
   const [rates, setRates] = useState<CurrencyRate[]>([]);
   const [sortKey, setSortKey] = useState<SortKey>('currency');
   const [sortOrder, setSortOrder] = useState<SortOrder>('asc');
